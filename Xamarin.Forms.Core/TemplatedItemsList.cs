@@ -529,7 +529,7 @@ namespace Xamarin.Forms.Internals
 
 			content = UpdateContent(content, index, item);
 
-			if (CachingStrategy == ListViewCachingStrategy.RecycleElement)
+			if ((CachingStrategy & ListViewCachingStrategy.RecycleElement) != 0)
 				return content;
 
 			for (int i = _templatedObjects.Count; i <= index; i++)
@@ -891,7 +891,7 @@ namespace Xamarin.Forms.Internals
 
 		void OnGroupingEnabledChanged()
 		{
-			if (CachingStrategy == ListViewCachingStrategy.RecycleElement)
+			if ((CachingStrategy & ListViewCachingStrategy.RecycleElement) != 0)
 				_templatedObjects.Clear();
 
 			OnItemsSourceChanged(true);
@@ -963,7 +963,7 @@ namespace Xamarin.Forms.Internals
 				return;
 			}
 
-			if (CachingStrategy == ListViewCachingStrategy.RecycleElement)
+			if ((CachingStrategy & ListViewCachingStrategy.RecycleElement) != 0)
 			{
 				OnCollectionChanged(e);
 				return;
